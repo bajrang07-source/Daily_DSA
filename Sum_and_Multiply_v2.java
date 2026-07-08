@@ -1,5 +1,5 @@
 /*
-Problem: Sum and Multiply
+Problem: Sum and Multiply V2
 Platform: LeetCode
 Language: Java
 
