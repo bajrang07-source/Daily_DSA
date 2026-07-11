@@ -16,15 +16,6 @@ class Solution {
                     arr[k++] = nums1[i++];
                 }
             }
-            // if(j<nums2.length){
-            //     if(nums1[i]>nums2[j]){
-            //         arr[k++] = nums2[j++];
-            //     }else{
-            //         arr[k++] = nums1[i++];
-            //     }
-            // }else{
-            //     arr[k++] = nums1[i++];
-            // }
         } 
         if(arr.length % 2 == 0){
             int num = arr.length/2;
