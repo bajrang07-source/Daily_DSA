@@ -1,13 +1,21 @@
 class Solution {
-    public int findGCD(int[] nums) {
-        Arrays.sort(nums);
-        int smallest = nums[0];
-        int largest = nums[nums.length-1];
-        for(int i=smallest; i>0; i--){
-            if(smallest % i == 0 && largest % i == 0){
-                return i;
-            }
+    //The solution uses Euclides Algorithm
+    private int gcd(int a, int b){
+        while(b!=0){
+            int temp = b;
+            b = a % b;
+            a = temp;
         }
-        return 1;
+        return a;
+    }
+    public int findGCD(int[] nums) {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int num : nums){
+            min = Math.min(num, min);
+            max = Math.max(num,max);
+        }
+
+        return gcd(min, max);
     }
 }
