@@ -1,4 +1,5 @@
 class Solution {
+    //Easy_One
     public List<String> fizzBuzz(int n) {
         List<String> list = new ArrayList<>();
         for(int i=1; i<=n; i++){
