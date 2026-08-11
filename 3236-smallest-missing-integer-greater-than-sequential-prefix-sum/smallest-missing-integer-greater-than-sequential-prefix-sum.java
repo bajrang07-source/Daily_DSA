@@ -11,11 +11,19 @@ class Solution {
                 break;
             }
         }
-        for(int val=i; val<nums.length; val++){
-            if(nums[val] == sum){
-                sum++;
-                val = -1;
-            }
+        // for(int val=i; val<nums.length; val++){
+        //     if(nums[val] == sum){
+        //         sum++;
+        //         val = -1;
+        //     }
+        // }
+
+        HashSet<Integer> hs = new HashSet<>();
+        for(int val=0; val<nums.length; val++){
+            hs.add(nums[val]);
+        }
+        while(hs.contains(sum)){
+            sum++;
         }
         return sum;
     }
