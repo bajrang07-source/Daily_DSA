@@ -1,6 +1,11 @@
 class Solution {
     public boolean stoneGame(int[] piles) {
         return true;
+
+
+
+        //-------My Approach-----
+        
         // int alice = 0;
         // int bob = 0;
         // int start = 0; 
@@ -34,7 +39,6 @@ class Solution {
         //         }
         //     }
         // }
-        // if(alice>bob) return true;
-        // else return false;
+        // return alice>bob;
     }
 }
