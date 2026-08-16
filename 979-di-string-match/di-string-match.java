@@ -10,7 +10,7 @@ class Solution {
                 ans[i] = n--;
             }
         }
-        ans[ans.length-1] = n;
+        ans[ans.length-1] = m;
         return ans;
     }
 }
