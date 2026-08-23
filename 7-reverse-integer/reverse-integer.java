@@ -1,19 +1,18 @@
 class Solution {
     public int reverse(int x) {
-        int digit=0, reverse = 0;
-        while(x!=0){
-            digit = x%10;
-            x = x/10;
-            if(reverse>Integer.MAX_VALUE/10 || 
-                (reverse == Integer.MAX_VALUE/10 && digit > 7)){
-                    return 0;
-            }
-            if(reverse<Integer.MIN_VALUE/10 || 
-                (reverse==Integer.MIN_VALUE && digit<-8)){
-                    return 0;
-            }
-            reverse = reverse * 10 + digit;
+        int n = x;
+        long reversed = 0;
+        long mul = 1;
+        if(n < 0){
+            mul = -1;
+            n *= -1;
         }
-        return reverse;
+        while(n > 0){
+            int lastDigit = n % 10;
+            n /= 10;
+            reversed = reversed * 10 + lastDigit;
+        }
+        if(mul * reversed > 2147483647 || mul * reversed < -2147483647) return 0;
+        return (int) mul * (int) reversed;
     }
 }
