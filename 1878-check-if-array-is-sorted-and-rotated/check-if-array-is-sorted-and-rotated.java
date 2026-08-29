@@ -18,7 +18,6 @@ class Solution {
                 arr[right] = temp;
             }
         }
-        // Put pivot in its correct position
         int temp = arr[low];
         arr[low] = arr[right];
         arr[right] = temp;
@@ -34,21 +33,35 @@ class Solution {
     }
 
     public boolean check(int[] nums) {
-        int[] sortedArray = nums.clone();
-        quickSort(sortedArray, 0, sortedArray.length - 1);
+
+        //-------------Brute Force Approach---------------------
+        // int[] sortedArray = nums.clone();
+        // quickSort(sortedArray, 0, sortedArray.length - 1);
+        // int n = nums.length;
+        // for(int x = 0; x < n; x++) {
+        //     boolean valid = true;
+        //     for(int j = 0; j < n; j++) {
+        //         if(nums[j] != sortedArray[(j + x) % n]) {
+        //             valid = false;
+        //             break;
+        //         }
+        //     }
+        //     if(valid) {
+        //         return true;
+        //     }
+        // }
+        // return false;
+
+        //--------------------OPTIMAL APPROACH-----------------------
+        int count = 0;
         int n = nums.length;
-        for(int x = 0; x < n; x++) {
-            boolean valid = true;
-            for(int j = 0; j < n; j++) {
-                if(nums[j] != sortedArray[(j + x) % n]) {
-                    valid = false;
-                    break;
-                }
+        for(int i = 0; i < n; i++) {
+            if(nums[i] > nums[(i+1) % n]) {
+                count++;
             }
-            if(valid) {
-                return true;
-            }
+
+            if(count > 1) return false;
         }
-        return false;
+        return true;
     }
 }
