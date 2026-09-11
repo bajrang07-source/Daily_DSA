@@ -9,6 +9,6 @@ class Solution {
             count++;
         }
 
-        return count;
+        return Math.min(totalCell, maxWeight/w);
     }
 }
