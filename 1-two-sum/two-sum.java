@@ -15,16 +15,23 @@ class Solution {
 //--------------      APPROACH 2      ------------------
 
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < n; i++) {
-            map.put(nums[i], i);
-        }
+        // for(int i = 0; i < n; i++) {
+        //     map.put(nums[i], i);
+        // }
 
         for(int j = 0; j < n; j++) {
             if(map.containsKey(target - nums[j]) && j != map.get(target - nums[j])) {
                 return new int[]{map.get(target - nums[j]), j};
             }
+            else{
+                map.put(nums[j], j);
+            }
         }
 
         return new int[]{-1, -1};
+
+//--------------      APPROACH 3      ------------------
+
+
     }
 }
