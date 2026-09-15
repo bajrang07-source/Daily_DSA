@@ -26,8 +26,8 @@ class Solution {
             map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
         }
 
-        for(int j = 0; j < n; j++) {
-            if(map.get(nums[j]) > n/2) return nums[j];
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if(entry.getValue() > n/2) return entry.getKey();
         }
         return -1;
     }
