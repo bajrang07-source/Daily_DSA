@@ -21,14 +21,36 @@ class Solution {
 
 //--------------      APPROACH 2      -----------------
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < n; i++) {
-            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
-        }
+        // HashMap<Integer, Integer> map = new HashMap<>();
+        // for(int i = 0; i < n; i++) {
+        //     map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+        // }
 
-        for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if(entry.getValue() > n/2) return entry.getKey();
+        // for(Map.Entry<Integer, Integer> entry : map.entrySet()) {
+        //     if(entry.getValue() > n/2) return entry.getKey();
+        // }
+        // return -1;
+
+//--------------      APPROACH 2      -----------------
+
+       int count = 0;
+       int ele = -1;
+
+       for(int i = 0; i < n; i++) {
+        if(count == 0) {
+            ele = nums[i];
         }
-        return -1;
+        if(nums[i] == ele) count++;
+        else count--;
+       }
+
+       count = 0;
+
+       for(int i = 0; i < n; i++) {
+        if(nums[i] == ele) count++;
+       } 
+
+       if(count > n/2) return ele;
+       else return -1;
     }
 }
