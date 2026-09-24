@@ -1,43 +1,50 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
-
-        //---Initial Approach----
-
-        if(nums.length<1) return 0;
-        Arrays.sort(nums);
-        int count = 1;
+        int n = nums.length;
+        if(n < 1) return 0;
         int ans = 0;
-        for(int i=1; i<nums.length; i++){
-            if(nums[i] - nums[i-1] == 1){
-                count++;
-            }
-            else if(nums[i] == nums[i-1]){
-                continue;
-            }else{
-                ans = Math.max(ans, count);
-                count=1;
-            }
-        }
-        return Math.max(ans, count);
-
-        //Approach considering TC:-
-        // HashSet<Integer> set = new HashSet<>();
-        // for(int num : nums){
-        //     set.add(num);
-        // }
-        // int ans = 0;
-        // for(int val : set){
-        //     if(!set.contains(val-1)){
-        //         int count = 1;
-        //         int c_val = val;
-
-        //         while(set.contains(c_val+1)){
-        //             count++;
-        //             c_val++;
+        
+//------------      APPROACH 1      ---------------
+        // for(int i = 0; i < n; i++) {
+        //     int val = nums[i];
+        //     int temp = 1;
+        //     for(int j = 0; j < n; j++) {
+        //         if(nums[j] == val+1) {
+        //             val++;
+        //             temp++;
+        //             j = 0;
         //         }
-        //         ans = Math.max(ans, count);
+        //     }
+        //     if(temp > ans) {
+        //         ans = temp;
         //     }
         // }
         // return ans;
+
+//------------      APPROACH 1      ---------------
+
+        Arrays.sort(nums);
+
+        int currLen = 1;
+        int lastMin = Integer.MIN_VALUE;
+        int largest = 0;
+
+        for(int i = 0; i < n; i++) {
+            if((nums[i] - 1) == lastMin) {
+                lastMin = nums[i];
+                currLen++;
+            }
+            else if(lastMin != nums[i]-1 && lastMin != nums[i]) {
+                currLen = 1;
+                lastMin = nums[i];
+            }
+            else{
+                continue;
+            }
+
+            largest = Math.max(currLen, largest);
+        }
+
+        return largest;
     }
 }
