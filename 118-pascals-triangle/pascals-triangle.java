@@ -29,10 +29,27 @@ class Solution {
 
 //------------       APPROACH 2       --------------
 
-        for(int i = 0; i < numRows; i++) {
+        // for(int i = 0; i < numRows; i++) {
+        //     List<Integer> list1 = new ArrayList<>();
+        //     for(int j = 0; j <= i; j++) {
+        //         list1.add(nCr(i, j));
+        //     }
+        //     list.add(list1);
+        // }
+        // return list;
+
+//------------       APPROACH 3       --------------
+
+        for(int row = 0; row < numRows; row++) {
             List<Integer> list1 = new ArrayList<>();
-            for(int j = 0; j <= i; j++) {
-                list1.add(nCr(i, j));
+            int ans = 1;
+            list1.add(ans);
+
+            for(int column = 0; column < row; column++) {
+                ans = ans * (row - column);
+                ans = ans / (column + 1);
+
+                list1.add(ans);
             }
             list.add(list1);
         }
