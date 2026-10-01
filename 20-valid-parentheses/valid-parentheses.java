@@ -26,10 +26,6 @@ class Solution {
                 }
             }
         }
-        if(S.empty()) {
-            return true;
-        } else {
-            return false;
-        }
+        return S.empty();
     }
 }
