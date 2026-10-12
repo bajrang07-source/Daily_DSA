@@ -5,23 +5,39 @@ class Solution {
 
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
 
+//------------       APPROACH 1     -----------
+
+        // for (int i = 0; i < row; i++) {
+        //     int start = intervals[i][0];
+        //     int end = intervals[i][1];
+
+        //     if (!list.isEmpty() &&
+        //         start <= list.get(list.size() - 1).get(1)) {
+        //         continue;
+        //     }
+
+        //     for (int j = i + 1; j < row; j++) {
+        //         if (intervals[j][0] <= end) {
+        //             end = Math.max(end, intervals[j][1]);
+        //         } else {
+        //             break;
+        //         }
+        //     }
+        //     list.add(Arrays.asList(start, end));
+        // }
+
+//------------       APPROACH 1     -----------
+
         for (int i = 0; i < row; i++) {
-            int start = intervals[i][0];
-            int end = intervals[i][1];
-
-            if (!list.isEmpty() &&
-                start <= list.get(list.size() - 1).get(1)) {
-                continue;
+            if(list.isEmpty() || intervals[i][0] > list.get(list.size() - 1).get(1)) {
+                list.add(Arrays.asList(intervals[i][0], intervals[i][1]));
             }
-
-            for (int j = i + 1; j < row; j++) {
-                if (intervals[j][0] <= end) {
-                    end = Math.max(end, intervals[j][1]);
-                } else {
-                    break;
-                }
+            else {
+                list.get(list.size() - 1).set(
+                    1,
+                    Math.max(list.get(list.size() - 1).get(1), intervals[i][1])
+                );
             }
-            list.add(Arrays.asList(start, end));
         }
 
         int[][] result = new int[list.size()][2];
