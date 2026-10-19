@@ -24,10 +24,8 @@ class Solution {
             int mid = left + (right - left) / 2;
             
             if (nums[mid] < nums[mid + 1]) {
-                // Moving towards the rising slope
                 left = mid + 1;
             } else {
-                // Peak is at mid or in the left half
                 right = mid;
             }
         }
