@@ -4,14 +4,14 @@ class Solution {
         int col = n;
 
         String[] grid = new String[row];
-        if(m == 1) {
-            String temp = "";
-            for(int i = 0; i < col; i++) {
-                temp += ".";
-            }
-            grid[0] = temp;
-            return grid;
-        }
+        // if(m == 1) {
+        //     String temp = "";
+        //     for(int i = 0; i < col; i++) {
+        //         temp += ".";
+        //     }
+        //     grid[0] = temp;
+        //     return grid;
+        // }
         
         for(int i = 0; i < row-1; i++) {
             String temp = ".";
