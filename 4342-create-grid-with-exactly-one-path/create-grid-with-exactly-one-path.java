@@ -1,31 +1,23 @@
 class Solution {
     public String[] createGrid(int m, int n) {
-        int row = m;
-        int col = n;
+        String[] grid = new String[m];
 
-        String[] grid = new String[row];
-        // if(m == 1) {
-        //     String temp = "";
-        //     for(int i = 0; i < col; i++) {
-        //         temp += ".";
-        //     }
-        //     grid[0] = temp;
-        //     return grid;
-        // }
-        
-        for(int i = 0; i < row-1; i++) {
-            String temp = ".";
-            for(int j = 1; j < col; j++) {
-                temp += "#";
-            }
-            grid[i] = temp;
+        StringBuilder row = new StringBuilder(".");
+        for (int j = 1; j < n; j++) {
+            row.append("#");
         }
 
-        String temp2 = "";
-        for(int i = 0; i < col; i++) {
-            temp2 += ".";
+        StringBuilder lastRow = new StringBuilder();
+        for (int j = 0; j < n; j++) {
+            lastRow.append(".");
         }
-        grid[row-1] = temp2;
+
+        for (int i = 0; i < m - 1; i++) {
+            grid[i] = row.toString();
+        }
+
+        grid[m - 1] = lastRow.toString();
+
         return grid;
     }
 }
