@@ -11,11 +11,9 @@ class Solution {
         for (int j = 0; j < n; j++) {
             lastRow.append(".");
         }
-
         for (int i = 0; i < m - 1; i++) {
             grid[i] = row.toString();
         }
-
         grid[m - 1] = lastRow.toString();
 
         return grid;
