@@ -1,37 +1,59 @@
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int[] arr = new int[nums1.length + nums2.length];
-        int i=0;
-        int j=0;
-        int k = 0;
-        while(i<nums1.length || j<nums2.length){
-            if(i == nums1.length){
-                arr[k++] = nums2[j++];
-            }else if(j == nums2.length){
-                arr[k++] = nums1[i++];
-            }else{
-                if(nums1[i]>nums2[j]){
-                    arr[k++] = nums2[j++];
-                }else{
-                    arr[k++] = nums1[i++];
-                }
+        int n = nums1.length;
+        int m = nums2.length;
+
+//-----------      APPROACH 1       --------------
+        // int[] arr = new int[n + m];
+
+        // int idx = 0;
+        // for(int i = 0; i < n; i++) {
+        //     arr[idx++] = nums1[i];
+        // }
+        // for(int j = 0; j < m; j++) {
+        //     arr[idx++] = nums2[j];
+        // }
+
+        // Arrays.sort(arr);
+
+        // if(arr.length % 2 == 0) {
+        //     int idx2 = arr.length / 2;
+
+        //     double ans = (arr[idx2] + arr[idx2-1]) / 2.0;
+
+        //     return ans;
+        // } 
+        // else {
+        //     return arr[arr.length / 2];
+        // }
+
+//-----------      APPROACH 2       --------------
+
+        int val1 = 0;
+        int val2 = 0;
+        int i = 0;
+        int j = 0;
+
+        int idx2 = (n + m) / 2;
+        int cnt = 0;
+
+        while (cnt <= idx2) {
+            val1 = val2;
+
+            if (i < n && (j >= m || nums1[i] <= nums2[j])) {
+                val2 = nums1[i++];
+            } else {
+                val2 = nums2[j++];
             }
-            // if(j<nums2.length){
-            //     if(nums1[i]>nums2[j]){
-            //         arr[k++] = nums2[j++];
-            //     }else{
-            //         arr[k++] = nums1[i++];
-            //     }
-            // }else{
-            //     arr[k++] = nums1[i++];
-            // }
-        } 
-        if(arr.length % 2 == 0){
-            int num = arr.length/2;
-            // int num1 = arr[num-1];
-            return (arr[num] / 2.0) + (arr[num - 1] / 2.0);
-        }else{
-            return (double) arr[arr.length/2];
+
+            cnt++;
+        }
+        
+        if((n + m) % 2 == 0) {
+            return ((double) val1 + val2) / 2.0;
+        }
+        else {
+            return val2;
         }
     }
 }
